@@ -1,0 +1,287 @@
+/* Root Variables */
+:root {
+    --color1: #001449; /* Color del header y footer */
+    --color2: #012677; /* Botones primarios */
+    --color3: #005bc5; /* Botones secundarios */
+    --color4: #00b4fc; /* Colores adicionales */
+    --color5: #17f9ff;
+}
+
+/* General Styles */
+html, body {
+    height: 100%; /* Asegura que el cuerpo y el html ocupen toda la altura */
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 0;
+    scroll-behavior: smooth; /* Suaviza el desplazamiento en la página */
+    
+}
+
+body {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro por defecto */
+    font-family: 'Arial', sans-serif; /* Fuente base */
+    display: flex;
+    flex-direction: column; /* Elementos en columna */
+    min-height: 100vh; /* Body ocupa mínimo 100% de la altura */
+    line-height: 1.6; /* Mejora la legibilidad */
+    
+}
+
+/* Centered Card Container */
+#cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px; /* Espacio entre tarjetas */
+    margin-top: 50px; /* Aumenta el espacio entre el header y las cards */
+}
+
+/* Carrusel */
+.carousel-inner img {
+    width: 100%;
+    height: 880px; /* Ajusta la altura en pantallas grandes */
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 500px; /* Ajusta la altura en pantallas pequeñas */
+    }
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo más oscuro para mejor legibilidad */
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%; /* Ancho ajustado */
+    text-align: left;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        width: 80%; /* Más ancho en pantallas pequeñas */
+        text-align: center;
+    }
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+    color: #ffffff;
+    text-align: justify;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra para mejorar visibilidad */
+}
+
+.carousel-indicators button {
+    background-color: #ffffff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators button:hover {
+    transform: scale(1.2);
+}
+
+.carousel-indicators .active {
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    transition: transform 0.3s ease;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    transform: scale(1.3) rotate(10deg);
+}
+
+/* Transición de imágenes */
+.carousel-inner {
+    transition: transform 0.6s ease-in-out;
+}
+
+
+
+/* Card Styles */
+.card {
+    border: 1px solid #124963; /* Borde de las tarjetas */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que el contenido sobresalga */
+    position: relative; /* Posición para el overlay */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    background-color: #fff; /* Fondo blanco para la tarjeta */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Escalar la tarjeta al hacer hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+}
+
+.card-body {
+    padding: 15px; /* Aumenta el padding para un diseño más espacioso */
+    z-index: 2; /* El texto estará sobre el overlay */
+    color: #000; /* Texto en negro */
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+/* Overlay Styles */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Negro con 60% de opacidad */
+    opacity: 0; /* Inicia invisible */
+    transition: opacity 0.3s ease; /* Transición suave */
+}
+
+.card-container:hover .overlay {
+    opacity: 1; /* Overlay visible al hacer hover */
+}
+
+/* Enlaces */
+a {
+    color: #1aa6b4;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #124963;
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.btn {
+    --border-color: linear-gradient(-45deg, var(--color4), var(--color3), var(--color5));
+    --border-width: 0.125em;
+    --curve-size: 0.5em;
+    --bg: #012677; /* Fondo */
+    --color: #ffffff;
+    color: var(--color);
+    cursor: pointer;
+    position: relative;
+    display: inline-grid;
+    place-content: center;
+    padding: 0.5em 1.5em;
+    font-size: 17px;
+    border: 0;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    clip-path: polygon(
+        0% var(--curve-size),
+        var(--curve-size) 0,
+        100% 0,
+        100% calc(100% - var(--curve-size)),
+        calc(100% - var(--curve-size)) 100%,
+        0 100%
+    );
+    transition: color 250ms;
+}
+
+.btn::before,
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.btn::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg 5s ease infinite;
+    z-index: -2;
+}
+
+@keyframes move-bg {
+    0% {
+        background-position: 31% 0%;
+    }
+    50% {
+        background-position: 70% 100%;
+    }
+    100% {
+        background-position: 31% 0%;
+    }
+}
+
+.btn::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(
+        var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+        calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+        var(--border-width) calc(100% - var(--border-width))
+    );
+    transition: clip-path 500ms;
+}
+
+.btn:hover::after,
+.btn:focus::after {
+    clip-path: polygon(
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+        calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+    );
+    transition: 200ms;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #fff; /* Color del texto en hover y focus */
+}
+
+/* Input Field Styles */
+input[type="text"], input[type="url"] {
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* Ocupa todo el ancho */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    margin-bottom: 10px; /* Espacio entre campos */
+}
+
+input[type="text"]:focus, input[type="url"]:focus {
+    outline: none; /* Elimina el borde predeterminado */
+    border-color: var(--color4); /* Color del borde en foco */
+    box-shadow: 0 0 5px rgba(0, 180, 252, 0.5); /* Sombra azul clara */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Tarjetas ocupan todo el ancho en dispositivos pequeños */
+    }
+
+    #cardContainer {
+        gap: 10px; /* Reduce espacio entre tarjetas */
+    }
+}
+#cardContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Opcional para agregar espacio entre las cards */
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--color1); /* Fondo color1 para el footer */
+    color: #ffffff; /* Texto blanco para el footer */
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+

@@ -1,0 +1,124 @@
+/* General */
+:root {
+    --color1: #00274D; /* Color principal */
+    --color2: #004BA0; /* Color secundario */
+    --color3: #FFC107; /* Color de acento */
+}
+
+/* Tarjetas */
+.card {
+    border: 1px solid var(--color2); /* Borde color secundario */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../static/img/futbol.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Filtro opaco */
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Ampliación al pasar el cursor */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.card-header {
+    background-color: var(--color1); /* Fondo color principal */
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    border-radius: 10px 10px 0 0; /* Redondeo en la parte superior */
+    border-bottom: 2px solid var(--color3); /* Línea decorativa */
+}
+
+.card-body {
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.03); /* Fondo sutil */
+}
+
+/* Estilo para los controles de audio */
+.list-unstyled li audio {
+    margin-left: auto; /* Alineación a la derecha */
+    width: 100%; /* Ancho completo */
+    max-width: 250px; /* Ancho máximo */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco translúcido */
+    padding: 5px; /* Espaciado interno */
+}
+
+/* Imágenes */
+.card img {
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    max-height: 250px; /* Altura máxima */
+    object-fit: cover; /* Ajuste proporcional */
+    margin-bottom: 20px; /* Separación inferior */
+}
+
+/* Listas */
+.list-unstyled {
+    padding: 0;
+    margin: 0;
+}
+
+.list-unstyled li {
+    display: flex; /* Diseño flexible */
+    align-items: center;
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Separación entre elementos */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde claro */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.list-unstyled li:hover {
+    transform: translateY(-3px); /* Elevación al pasar el cursor */
+    background-color: rgba(0, 0, 0, 0.05); /* Fondo resaltado */
+}
+
+.list-unstyled li strong {
+    flex-shrink: 0; /* Evita que se reduzca el ancho */
+    width: 150px; /* Ancho fijo */
+    color: var(--color1); /* Color principal */
+    margin-right: 15px; /* Separación del texto */
+    text-transform: capitalize; /* Primera letra en mayúscula */
+    font-weight: bold;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .list-unstyled li {
+        flex-direction: column; /* Cambia a diseño en columna */
+        align-items: flex-start; /* Alineación al inicio */
+        padding: 15px; /* Espaciado mayor */
+    }
+
+    .list-unstyled li strong {
+        width: auto; /* Ajuste dinámico */
+        margin-bottom: 10px; /* Separación inferior */
+    }
+
+    .list-unstyled li audio {
+        margin-left: 0; /* Sin margen izquierdo */
+        width: 100%; /* Ancho completo */
+    }
+}
