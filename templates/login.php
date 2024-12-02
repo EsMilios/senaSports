@@ -7,9 +7,9 @@ $error_message = "";
 
 // Conexión a la base de datos
 $host = 'localhost'; // o el host de tu base de datos
-$username = 'root';   // tu nombre de usuario
-$password = '';       // tu contraseña
-$dbname = 'sports_blog'; // Cambia a 'sports_blog' en lugar de 'sena_sports'
+$username = 'u469734594_rootSports';   // tu nombre de usuario
+$password = 'Sports2024';       // tu contraseña
+$dbname = 'u469734594_sports'; // Cambia a 'sports_blog' en lugar de 'sena_sports'
 
 // Conexión a la base de datos
 $conn = mysqli_connect($host, $username, $password, $dbname);
